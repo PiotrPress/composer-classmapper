@@ -13,7 +13,7 @@ class Autoloader {
         if ( self::rmdir( $directory . '/composer' ) ) echo "Composer directory removed successfully\n";
         else throw new \Exception( 'Something went wrong while removing composer directory' );
 
-        if ( $classmap->dump( $directory . $file ) ) echo "Classmap file created successfully\n";
+        if ( $classmap->dump( $directory . '/classmap.php' ) ) echo "Classmap file created successfully\n";
         else throw new \Exception( 'Something went wrong while creating classmap file' );
 
         if ( \copy( __DIR__ . $file, $directory . $file ) ) echo "Autoload file created successfully\n";
@@ -22,7 +22,7 @@ class Autoloader {
         return true;
     }
 
-    protected static function rmdir( $directory ) : bool {
+    protected static function rmdir( string $directory ) : bool {
         if ( \is_dir( $directory ) ) {
             $directory = \rtrim( \str_replace( '\\', '/', $directory ), '/' ) . '/';
             $files = \glob( $directory . '*', \GLOB_MARK );
