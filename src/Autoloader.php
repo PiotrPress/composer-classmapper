@@ -7,7 +7,7 @@ use PiotrPress\Classmap;
 class Autoloader {
     public static function dump() : bool {
         $directory = \dirname( \dirname( \dirname( __DIR__ ) ) );
-        $classmap = new Classmap( $directory );
+        $classmap = new Classmap( \dirname( $directory ) );
         $file = '/autoload.php';
 
         if ( self::rmdir( $directory . '/composer' ) ) echo "Composer directory removed successfully\n";
