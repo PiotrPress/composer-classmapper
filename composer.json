@@ -1,8 +1,8 @@
 {
   "name": "piotrpress/composer-autoloader",
-  "type": "library",
-  "license": "GPL-3.0",
-  "description": "This library is a composer autoloader replacement based on a classmap file.",
+  "type": "composer-plugin",
+  "license": "MIT",
+  "description": "This composer command allows to generate simple autoloader file based on a classmap file.",
   "homepage": "https://PiotrPress",
   "authors": [
     {
@@ -11,15 +11,18 @@
     }
   ],
   "keywords": [
-    "autoloader", "autoload", "classmap", "class map", "composer", "composer script"
+    "autoloader", "autoload", "classmap", "class map", "composer", "composer script", "composer plugin", "composer command"
   ],
   "require": {
     "php": ">=7.4",
-    "piotrpress/classmap": "1.0.0"
+    "composer-plugin-api": "^2.0"
+  },
+  "extra": {
+    "class": "PiotrPress\\Composer\\Autoloader\\Plugin"
   },
   "autoload": {
     "psr-4": {
-      "PiotrPress\\Composer\\": "src/"
+      "PiotrPress\\Composer\\Autoloader\\": "src/"
     },
     "classmap": [
       "src"

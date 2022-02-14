@@ -1,34 +1,45 @@
 # Composer Autoloader
 
-This library is a composer autoloader replacement based on a classmap file.
+This composer command allows to generate simple autoloader file based on a classmap file.
+
+**NOTE:** The command can be executed in projects without `composer.json` file too.
+
+## Installation
+
+1. Add the command as a global composer plugin:
+
+```shell
+$ composer global require piotrpress/composer-autoloader
+```
+
+2. Allow plugin execution:
+
+```shell
+$ composer config -g allow-plugins.piotrpress/composer-autoloader true
+```
 
 ## Usage
 
-1. Include required dependency `piotrpress/composer-autoloader` in your project's `composer.json` file.
-2. Add the function `PiotrPress\\Composer\\Autoloader::dump`  to script section in your project's `composer.json` file. It'll be triggered after install/update composer command execution.
+1. Execute the command in your project's directory:
 
-```json
-{
-  "require": {
-    "piotrpress/composer-autoloader": "*"
-  },
-  "scripts": {
-    "post-install-cmd": [
-      "PiotrPress\\Composer\\Autoloader::dump"
-    ],
-    "post-update-cmd": [
-      "PiotrPress\\Composer\\Autoloader::dump"
-    ]
-  }
-}
+```shell
+$ composer autoload [-e|--exclude [REGEX]]
 ```
 
-3. After `composer install`/`composer update` command execution, you can simply include autoload file to your project as usual.
+**NOTE:** The option `exclude` is regex that matches file paths to be excluded from the classmap.
+
+2. After the command execution, you can simply include autoload file to your project as usual:
 
 ```php
 require __DIR__ . '/vendor/autoload.php';
 ```
 
+## Example
+
+```shell
+$ composer autoload -e"#/vendor/composer/(.*)#"
+```
+
 ## License
 
-[GPL3.0](license.txt)
+[MIT](license.txt)
