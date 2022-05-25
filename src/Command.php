@@ -43,5 +43,7 @@ class Command extends BaseCommand {
         $file = '/autoload.php';
         $fs->copy( \dirname( __DIR__ ) . '/res' . $file, $dir . $file, true );
         $output->writeln( \sprintf( $info, 'Autoload file created successfully' ) );
+
+        return self::SUCCESS;
     }
 }
