@@ -1,6 +1,6 @@
 <?php declare( strict_types = 1 );
 
-namespace PiotrPress\Composer\Autoloader;
+namespace PiotrPress\Composer\ClassMapper;
 
 use Composer\Plugin\Capability\CommandProvider;
 
